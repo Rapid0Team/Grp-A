@@ -2,10 +2,14 @@ import { HardDrive, Search, ShoppingCart, User ,Logs, X  } from "lucide-react";
 import HeaderPhone from "./HeaderPhone";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Header() {
   const [show, setShow]=useState(false);
+  const navigate = useNavigate()
+
   return (
 
     <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
@@ -51,15 +55,15 @@ export default function Header() {
               3
             </span>
           </button>
-          <button className="p-2 text-gray-600 hover:text-[#0056D2] transition-colors">
+          <button onClick={() => navigate("/login")} className="p-2 hover:cursor-pointer text-gray-600 hover:text-[#0056D2] transition-colors">
             <User className="h-5 w-5" />
           </button>
-          <button onClick={()=> setShow(!show)} className="p-2 sm:hidden   text-gray-600 hover:text-[#0056D2] transition-colors">
+          <a onClick={()=> setShow(!show)} className="p-2 sm:hidden   text-gray-600 hover:text-[#0056D2] transition-colors">
             {show ? <X  className="h-5 w-5" /> : 
             <Logs  className="h-5 w-5" />
             }
             
-          </button>
+          </a>
           <button className="hidden md:flex bg-[#FF6B00] hover:bg-[#FF6B00]/90 text-white px-4 py-2 rounded-md shadow-md transition-colors">
             Contact Sales
           </button>
